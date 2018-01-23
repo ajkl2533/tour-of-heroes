@@ -1,0 +1,21 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
+  </header>
+  <div class="content">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="is-narrow">id:</td>
+          <td>{{ hero.id }}</td>
+        </tr>
+        <tr>
+          <td class="is-narrow">name:</td>
+          <td>
+            <input type="text" [(ngModel)]="hero.name" class="input" placeholder="name">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
