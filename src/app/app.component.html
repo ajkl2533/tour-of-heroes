@@ -1,8 +1,15 @@
-<section class="section">
-    <div class="container">
-      <h1 class="title">
-        {{ title }}
-      </h1>
-      <app-heroes></app-heroes>
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a routerLink="/" class="navbar-item">{{ title }}</a>
+  </div>
+  <div class="navbar-menu is-active">
+    <div class="navbar-start">
+      <a routerLink="/heroes" routerLinkActive="is-active" class="navbar-item">Heroes</a>
     </div>
-  </section>
+  </div>
+</nav>
+<section class="section">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</section>
