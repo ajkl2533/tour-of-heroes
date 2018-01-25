@@ -13,26 +13,6 @@
     </div>
   </div>
   <div class="column">
-    <div class="card" *ngIf="selectedHero">
-        <header class="card-header">
-          <p class="card-header-title">{{ selectedHero.name | uppercase }} details!</p>
-        </header>
-        <div class="content">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td class="is-narrow">id:</td>
-                <td>{{ selectedHero.id }}</td>
-              </tr>
-              <tr>
-                <td class="is-narrow">name:</td>
-                <td>
-                  <input type="text" [(ngModel)]="selectedHero.name" class="input" placeholder="name">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <app-hero-details [hero]="selectedHero"></app-hero-details>
   </div>
 </div>
