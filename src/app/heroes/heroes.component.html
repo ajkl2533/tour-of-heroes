@@ -1,0 +1,38 @@
+<div class="columns">
+  <div class="column is-one-third-tablet">
+    <div class="content">
+        <h2 class="title">My Heroes</h2>
+        <div class="field has-addons" *ngFor="let hero of heroes" [ngClass]="{'is-selected': hero === selectedHero}" (click)="onSelect(hero)">
+          <div class="control">
+            <span class="button static">{{ hero.id }}</span>
+          </div>
+          <div class="control">
+              <span class="button static">{{ hero.name }}</span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card" *ngIf="selectedHero">
+        <header class="card-header">
+          <p class="card-header-title">{{ selectedHero.name | uppercase }} details!</p>
+        </header>
+        <div class="content">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="is-narrow">id:</td>
+                <td>{{ selectedHero.id }}</td>
+              </tr>
+              <tr>
+                <td class="is-narrow">name:</td>
+                <td>
+                  <input type="text" [(ngModel)]="selectedHero.name" class="input" placeholder="name">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
