@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
-import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailsComponent } from './hero-details/hero-details.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HeroService } from './hero.service';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSelectComponent } from './hero-select/hero-select.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeroesComponent } from './components/hero/heroes.component';
+import { HeroDetailsComponent } from './components/hero/hero-details.component';
+import { HeroSelectComponent } from './components/hero/hero-select.component';
 
 
 @NgModule({

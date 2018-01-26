@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../classes/Hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../classes/Hero';
+import { HeroService } from '../../hero.service';
 
 @Component({
   selector: 'app-heroes',
