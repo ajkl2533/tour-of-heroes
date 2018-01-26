@@ -29,9 +29,17 @@ export class HeroDetailsComponent implements OnInit {
       .then(h => this.hero = h);
   }
 
-
   goBack(): void {
     this.location.back();
+  }
+
+  upvoteHero(): void {
+    this.heroService.upvoteHero(this.hero.id);
+  }
+
+  downvoteHero(): void {
+    this.heroService.downvoteHero(this.hero.id)
+      .catch(() => console.log('cannot downvote'));
   }
 
 }

@@ -9,6 +9,16 @@ export class HeroService {
 
   constructor() { }
 
+  private findHero(id: number): Hero {
+    return heroes.find(hero => hero.id === id);
+  }
+
+  private canDownvote(id: number): boolean {
+    const h = this.findHero(id);
+
+    return h.upvotes > 0;
+  }
+
   getHeroes(): Promise<Hero[]> {
     return new Promise(resolve => {
       resolve(heroes);
@@ -24,8 +34,26 @@ export class HeroService {
 
   getHero(id: number): Promise<Hero> {
     return new Promise(resolve => {
-      const h = heroes.find(hero => hero.id === id);
+      const h = this.findHero(id);
       resolve(h);
+    });
+  }
+
+  upvoteHero(id: number): Promise<boolean> {
+    return new Promise(resolve => {
+      this.findHero(id).upvotes++;
+      resolve(true);
+    });
+  }
+
+  downvoteHero(id: number): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (this.canDownvote(id)) {
+        this.findHero(id).upvotes--;
+        resolve(true);
+      } else {
+        reject(false);
+      }
     });
   }
 }
