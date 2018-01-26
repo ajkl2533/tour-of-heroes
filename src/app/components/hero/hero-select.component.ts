@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Hero } from "../../classes/Hero";
+import { Hero } from '../../classes/Hero';
 
 @Component({
   selector: 'app-hero-select',
