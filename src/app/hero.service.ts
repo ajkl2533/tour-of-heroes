@@ -56,4 +56,17 @@ export class HeroService {
       }
     });
   }
+
+  updateHero(hero: Hero): Promise<Hero> {
+    return new Promise((resolve, reject) => {
+      let h = this.findHero(hero.id);
+
+      if (!h) {
+        reject();
+      } else {
+        h = {...h, ...hero};
+        resolve(h);
+      }
+    });
+  }
 }

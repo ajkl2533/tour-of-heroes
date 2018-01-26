@@ -34,12 +34,20 @@ export class HeroDetailsComponent implements OnInit {
   }
 
   upvoteHero(): void {
-    this.heroService.upvoteHero(this.hero.id);
+    this.heroService.upvoteHero(this.hero.id)
+      .then(() => this.hero.upvotes++);
   }
 
   downvoteHero(): void {
     this.heroService.downvoteHero(this.hero.id)
-      .catch(() => console.log('cannot downvote'));
+      .then(() => this.hero.upvotes--)
+      .catch(() => console.error('cannot downvote'));
+  }
+
+  saveHero(): void {
+    this.heroService.updateHero(this.hero)
+      .then(() => this.goBack())
+      .catch(() => console.error('cannot update'));
   }
 
 }
