@@ -7,9 +7,12 @@
             <span class="button static">{{ hero.id }}</span>
           </div>
           <div class="control">
-              <a routerLink="/detail/{{ hero.id }}" class="button">{{ hero.name }}</a>
+              <a (click)="onSelect(hero)" class="button">{{ hero.name }}</a>
             </div>
         </div>
     </div>
+  </div>
+  <div class="column">
+      <app-hero-select [hero]="selectedHero"></app-hero-select>
   </div>
 </div>

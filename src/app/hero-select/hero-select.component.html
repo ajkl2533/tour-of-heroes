@@ -1,0 +1,6 @@
+<div class="hero" *ngIf="hero">
+  <h3 class="subtitle">{{ hero.name | uppercase }} is my hero!</h3>
+  <div>
+    <a routerLink="/detail/{{ hero.id }}" class="button">View Details</a>
+  </div>
+</div>
