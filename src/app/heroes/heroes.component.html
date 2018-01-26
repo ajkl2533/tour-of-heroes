@@ -2,17 +2,14 @@
   <div class="column is-one-third-tablet">
     <div class="content">
         <h2 class="title">My Heroes</h2>
-        <div class="field has-addons" *ngFor="let hero of heroes" [ngClass]="{'is-selected': hero === selectedHero}" (click)="onSelect(hero)">
+        <div class="field has-addons" *ngFor="let hero of heroes">
           <div class="control">
             <span class="button static">{{ hero.id }}</span>
           </div>
           <div class="control">
-              <span class="button static">{{ hero.name }}</span>
+              <a routerLink="/detail/{{ hero.id }}" class="button">{{ hero.name }}</a>
             </div>
         </div>
     </div>
-  </div>
-  <div class="column">
-    <app-hero-details [hero]="selectedHero"></app-hero-details>
   </div>
 </div>

@@ -14,4 +14,12 @@ export class HeroService {
       resolve(heroes);
     });
   }
+
+  getHero(id: number): Promise<Hero> {
+    return new Promise(resolve => {
+      const h = heroes.find(hero => hero.id === id);
+      console.log(h);
+      resolve(h);
+    });
+  }
 }

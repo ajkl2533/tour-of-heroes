@@ -1,21 +1,26 @@
-<div class="card" *ngIf="hero">
-  <header class="card-header">
-    <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
-  </header>
-  <div class="content">
-    <table class="table">
-      <tbody>
-        <tr>
-          <td class="is-narrow">id:</td>
-          <td>{{ hero.id }}</td>
-        </tr>
-        <tr>
-          <td class="is-narrow">name:</td>
-          <td>
-            <input type="text" [(ngModel)]="hero.name" class="input" placeholder="name">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="columns">
+  <div class="column">
+    <div class="card" *ngIf="hero">
+        <header class="card-header">
+          <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
+        </header>
+        <div class="card-content">
+          <div class=field>
+            <label class="label">Id</label>
+            <div class="control">
+               <input type="text" disabled value="{{ hero.id }}" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <label for="name" class="label">Name</label>
+            <div class="control">
+              <input type="text" [(ngModel)]="hero.name" class="input" id="name" placeholder="name">
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+            <a class="card-footer-item" (click)="goBack()">Go back</a>
+        </footer>
+      </div>
   </div>
 </div>

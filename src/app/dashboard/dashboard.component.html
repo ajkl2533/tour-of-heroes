@@ -3,7 +3,7 @@
     <h2 class="title">Top Heroes</h2>
     <div class="columns">
       <div class="column" *ngFor="let hero of heroes">
-        <a class="button is-primary is-fullwidth">{{ hero.name }}</a>
+        <a routerLink="/detail/{{ hero.id }}" class="button is-primary is-fullwidth">{{ hero.name }}</a>
       </div>
     </div>
   </div>
