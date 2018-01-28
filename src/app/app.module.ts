@@ -11,6 +11,7 @@ import { HeroesComponent } from './components/hero/heroes.component';
 import { HeroDetailsComponent } from './components/hero/hero-details.component';
 import { HeroSelectComponent } from './components/hero/hero-select.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ReplaceNewlinesPipe } from './pipes/replace-newlines.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     HeroDetailsComponent,
     DashboardComponent,
     HeroSelectComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReplaceNewlinesPipe
   ],
   imports: [
     BrowserModule,

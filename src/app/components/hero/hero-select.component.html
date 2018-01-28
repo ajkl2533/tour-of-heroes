@@ -4,9 +4,8 @@
       <div class="content">
         <p>
           <strong>{{ hero.name | uppercase }}</strong> <small>#{{ hero.id }}</small>
-          <br>
-          {{ hero.bio }}
         </p>
+        <p [innerHTML]="hero.bio | replaceNewlines"></p>
       </div>
       <nav class="level">
         <div class="level-left">
