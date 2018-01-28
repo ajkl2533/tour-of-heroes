@@ -1,17 +1,14 @@
 <div class="columns">
-  <div class="column is-one-third-tablet">
-    <div class="content">
-        <h2 class="title">My Heroes</h2>
-        <div class="field has-addons" *ngFor="let hero of heroes">
-          <div class="control">
-            <span class="button static">{{ hero.id }}</span>
-          </div>
-          <div class="control">
-              <a (click)="onSelect(hero)" class="button">{{ hero.name }}</a>
-            </div>
-        </div>
-    </div>
-  </div>
+  <aside class="column is-2 aside menu">
+    <p class="menu-label">My heroes</p>
+    <ul class="menu-list">
+      <li *ngFor="let hero of heroes">
+        <a (click)="onSelect(hero)">
+          <span class="is-italic has-text-weight-light">#{{ hero.id }}</span> &ndash; <strong>{{ hero.name }}</strong>
+        </a>
+      </li>
+    </ul>
+  </aside>
   <div class="column">
       <app-hero-select [hero]="selectedHero"></app-hero-select>
   </div>
