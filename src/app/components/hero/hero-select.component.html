@@ -1,6 +1,29 @@
 <div class="hero" *ngIf="hero">
-  <h3 class="subtitle">{{ hero.name | uppercase }} is my hero!</h3>
-  <div>
-    <a routerLink="/detail/{{ hero.id }}" class="button">View Details</a>
-  </div>
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ hero.name | uppercase }}</strong> <small>#{{ hero.id }}</small>
+          <br>
+          {{ hero.bio }}
+        </p>
+      </div>
+      <nav class="level">
+        <div class="level-left">
+          <a class="level-item" (click)="downvote()">
+            <span class="icon is-small has-text-danger"><i class="fas fa-thumbs-down"></i></span>
+          </a>
+          <a class="level-item" (click)="upvote()">
+            <span class="icon is-small has-text-success"><i class="fas fa-thumbs-up"></i></span>
+          </a>
+          <span class="level-item">
+            {{ hero.upvotes }}
+          </span>
+        </div>
+      </nav>
+    </div>
+    <div class="media-right">
+        <a routerLink="/detail/{{ hero.id }}" class="has-text-info"><span class="fas fa-edit"></span></a>
+    </div>
+  </article>
 </div>
