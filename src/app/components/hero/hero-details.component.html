@@ -1,36 +1,71 @@
 <div class="columns">
-  <div class="column">
+  <div class="column is-8">
     <form *ngIf="hero" #heroDetailForm="ngForm">
       <h2 class="title">{{ hero.name | uppercase }} details!</h2>
-      <div class=field>
-        <label class="label">Id</label>
-        <div class="control">
-            <input type="text" disabled value="{{ hero.id }}" name="id" class="input">
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Id</label>
         </div>
-      </div>
-      <div class="field">
-        <label for="name" class="label">Name</label>
-        <div class="control">
-          <input type="text" class="input" id="name" name="name" placeholder="name" required [(ngModel)]="hero.name" #name="ngModel" [class.is-danger]="name.invalid && name.touched">
+        <div class="field-body">
+          <div class="field is-expanded">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  #
+                </a>
+              </p>
+              <p class="control is-expanded">
+                  <input type="text" disabled value="{{ hero.id }}" name="id" class="input">
+              </p>
+            </div>
+          </div>
         </div>
-        <p class="help is-danger" *ngIf="name.errors && (name.dirty || name.touched)">
-          <span>Name is required!</span>
-        </p>
       </div>
 
-      <div class="field has-addons">
-        <p class="control">
-          <a (click)="downvoteHero()" class="button is-outlined is-danger"><span class="far fa-thumbs-down"></span></a>
-        </p>
-        <p class="control">
-          <span class="input has-text-centered">{{ hero.upvotes }}</span>
-        </p>
-        <p class="control">
-            <a (click)="upvoteHero()" class="button is-outlined is-success"><span class="far fa-thumbs-up"></span></a>
-        </p>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label for="name" class="label">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+                <input type="text" class="input" id="name" name="name" placeholder="Hero name" required [(ngModel)]="hero.name" #name="ngModel" [class.is-danger]="name.invalid && name.touched">
+            </div>
+            <p class="help is-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+              Name is required!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label for="bio" class="label">Bio</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <textarea class="textarea" id="bio" name="bio" placeholder="Hero bio" [(ngModel)]="hero.bio" rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label for="name" class="label">Upvotes</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="number" class="input" id="upvote" name="upvotes" placeholder="Hero upvotes" value="{{ hero.upvotes }}" disabled>
+            </div>
+          </div>
+        </div>
       </div>
       
-      <div class="field is-grouped">
+      <div class="field is-grouped is-grouped-right">
           <div class="control">
             <button class="button is-link" [disabled]="!heroDetailForm.form.valid" (click)="saveHero()">Save</button>
           </div>
