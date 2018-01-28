@@ -1,38 +1,43 @@
 <div class="columns">
   <div class="column">
-    <div class="card" *ngIf="hero">
-      <header class="card-header">
-        <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
-      </header>
-      <div class="card-content">
-        <div class=field>
-          <label class="label">Id</label>
-          <div class="control">
-              <input type="text" disabled value="{{ hero.id }}" class="input">
-          </div>
-        </div>
-        <div class=field>
-            <label class="label">Upvotes</label>
-            <div class="control">
-                <input type="text" disabled value="{{ hero.upvotes }}" class="input">
-            </div>
-          </div>
-        <div class="field">
-          <label for="name" class="label">Name</label>
-          <div class="control">
-            <input type="text" class="input" id="name" placeholder="name" required [(ngModel)]="hero.name" #name="ngModel" [class.is-danger]="name.invalid && name.touched">
-          </div>
-          <p class="help is-danger" *ngIf="name.errors && (name.dirty || name.touched)">
-            <span>Name is required!</span>
-          </p>
+    <form *ngIf="hero" #heroDetailForm="ngForm">
+      <h2 class="title">{{ hero.name | uppercase }} details!</h2>
+      <div class=field>
+        <label class="label">Id</label>
+        <div class="control">
+            <input type="text" disabled value="{{ hero.id }}" name="id" class="input">
         </div>
       </div>
-      <footer class="card-footer">
-          <a class="card-footer-item" (click)="saveHero()">Save</a>
-          <a class="card-footer-item" (click)="goBack()">Go back</a>
-          <a class="card-footer-item" (click)="upvoteHero()">Upvote</a>
-          <a class="card-footer-item" (click)="downvoteHero()">Downvote</a>
-      </footer>
-    </div>
+      <div class="field">
+        <label for="name" class="label">Name</label>
+        <div class="control">
+          <input type="text" class="input" id="name" name="name" placeholder="name" required [(ngModel)]="hero.name" #name="ngModel" [class.is-danger]="name.invalid && name.touched">
+        </div>
+        <p class="help is-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+          <span>Name is required!</span>
+        </p>
+      </div>
+
+      <div class="field has-addons">
+        <p class="control">
+          <a (click)="downvoteHero()" class="button is-outlined is-danger"><span class="far fa-thumbs-down"></span></a>
+        </p>
+        <p class="control">
+          <span class="input has-text-centered">{{ hero.upvotes }}</span>
+        </p>
+        <p class="control">
+            <a (click)="upvoteHero()" class="button is-outlined is-success"><span class="far fa-thumbs-up"></span></a>
+        </p>
+      </div>
+      
+      <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" [disabled]="!heroDetailForm.form.valid" (click)="saveHero()">Save</button>
+          </div>
+          <div class="control">
+            <button class="button is-text" (click)="goBack()">Cancel</button>
+          </div>
+        </div>
+    </form>
   </div>
 </div>
