@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import orderBy from 'lodash-es/orderBy';
+import remove from 'lodash-es/remove';
 
 import { Hero } from './classes/Hero';
 import { heroes } from './data/heroes';
@@ -75,6 +76,12 @@ export class HeroService {
         heroes.push(h);
         resolve(h);
       }
+    });
+  }
+
+  deleteHero(id: number): Promise<Hero[]> {
+    return new Promise((resolve, reject) => {
+      resolve(remove(heroes, hero => hero.id === id));
     });
   }
 }

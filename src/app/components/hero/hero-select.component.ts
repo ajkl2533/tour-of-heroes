@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Hero } from '../../classes/Hero';
 import { HeroService } from '../../hero.service';
@@ -10,6 +10,7 @@ import { HeroService } from '../../hero.service';
 })
 export class HeroSelectComponent implements OnInit {
   @Input() hero: Hero;
+  @Output() deleted: EventEmitter<any> = new EventEmitter();
 
   constructor(private heroService: HeroService) { }
 
@@ -22,5 +23,10 @@ export class HeroSelectComponent implements OnInit {
 
   upvote() {
     this.heroService.upvoteHero(this.hero.id);
+  }
+
+  delete() {
+    this.heroService.deleteHero(this.hero.id)
+      .then(() => this.deleted.emit());
   }
 }

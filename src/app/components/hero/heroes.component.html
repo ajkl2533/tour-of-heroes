@@ -15,6 +15,6 @@
     </ul>
   </aside>
   <div class="column">
-      <app-hero-select [hero]="selectedHero"></app-hero-select>
+      <app-hero-select [hero]="selectedHero" (deleted)="cancelSelectedHero()"></app-hero-select>
   </div>
 </div>

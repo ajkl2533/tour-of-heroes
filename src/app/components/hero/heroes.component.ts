@@ -29,4 +29,8 @@ export class HeroesComponent implements OnInit {
       });
   }
 
+  cancelSelectedHero(): void {
+    this.selectedHero = null;
+  }
+
 }
