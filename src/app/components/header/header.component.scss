@@ -1,0 +1,9 @@
+.navbar {
+    .navbar-brand {
+        background: transparentize($color: #000000, $amount: .5);
+        
+        svg {
+            margin-right: .5rem;
+        }
+    }
+}
