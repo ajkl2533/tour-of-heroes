@@ -1,35 +1,38 @@
 <div class="columns">
   <div class="column">
     <div class="card" *ngIf="hero">
-        <header class="card-header">
-          <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
-        </header>
-        <div class="card-content">
-          <div class=field>
-            <label class="label">Id</label>
-            <div class="control">
-               <input type="text" disabled value="{{ hero.id }}" class="input">
-            </div>
-          </div>
-          <div class=field>
-              <label class="label">Upvotes</label>
-              <div class="control">
-                 <input type="text" disabled value="{{ hero.upvotes }}" class="input">
-              </div>
-            </div>
-          <div class="field">
-            <label for="name" class="label">Name</label>
-            <div class="control">
-              <input type="text" [(ngModel)]="hero.name" class="input" id="name" placeholder="name">
-            </div>
+      <header class="card-header">
+        <p class="card-header-title">{{ hero.name | uppercase }} details!</p>
+      </header>
+      <div class="card-content">
+        <div class=field>
+          <label class="label">Id</label>
+          <div class="control">
+              <input type="text" disabled value="{{ hero.id }}" class="input">
           </div>
         </div>
-        <footer class="card-footer">
-            <a class="card-footer-item" (click)="saveHero()">Save</a>
-            <a class="card-footer-item" (click)="goBack()">Go back</a>
-            <a class="card-footer-item" (click)="upvoteHero()">Upvote</a>
-            <a class="card-footer-item" (click)="downvoteHero()">Downvote</a>
-        </footer>
+        <div class=field>
+            <label class="label">Upvotes</label>
+            <div class="control">
+                <input type="text" disabled value="{{ hero.upvotes }}" class="input">
+            </div>
+          </div>
+        <div class="field">
+          <label for="name" class="label">Name</label>
+          <div class="control">
+            <input type="text" class="input" id="name" placeholder="name" required [(ngModel)]="hero.name" #name="ngModel" [class.is-danger]="name.invalid && name.touched">
+          </div>
+          <p class="help is-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+            <span>Name is required!</span>
+          </p>
+        </div>
       </div>
+      <footer class="card-footer">
+          <a class="card-footer-item" (click)="saveHero()">Save</a>
+          <a class="card-footer-item" (click)="goBack()">Go back</a>
+          <a class="card-footer-item" (click)="upvoteHero()">Upvote</a>
+          <a class="card-footer-item" (click)="downvoteHero()">Downvote</a>
+      </footer>
+    </div>
   </div>
 </div>
