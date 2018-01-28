@@ -1,5 +1,10 @@
 <div class="columns">
   <aside class="column is-2 aside menu">
+    <p>
+      <a routerLink="/detail/create" class="button is-success is-fullwidth">
+        <span class="icon"><i class="fas fa-plus"></i></span><span>New hero</span>
+      </a>
+    </p>
     <p class="menu-label">My heroes</p>
     <ul class="menu-list">
       <li *ngFor="let hero of heroes">

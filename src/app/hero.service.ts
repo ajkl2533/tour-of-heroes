@@ -19,6 +19,11 @@ export class HeroService {
     return h.upvotes > 0;
   }
 
+  private getNextIndex(): number {
+    const lastIndex = Math.max.apply(Math, heroes.map(hero => hero.id));
+    return lastIndex + 1;
+  }
+
   getHeroes(): Promise<Hero[]> {
     return new Promise(resolve => {
       resolve(heroes);
@@ -59,12 +64,15 @@ export class HeroService {
 
   updateHero(hero: Hero): Promise<Hero> {
     return new Promise((resolve, reject) => {
-      let h = this.findHero(hero.id);
+      let h: Hero;
+      if (hero.id) {
+        h = this.findHero(hero.id);
 
-      if (!h) {
-        reject();
+        !h ? reject() : resolve({...h, ...hero});
       } else {
-        h = {...h, ...hero};
+        h = {...hero, id: this.getNextIndex()};
+
+        heroes.push(h);
         resolve(h);
       }
     });
